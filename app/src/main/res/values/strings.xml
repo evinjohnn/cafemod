@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Café Mode</string>
+    <string name="enable_cafe_mode">Enable Café Mode</string>
+    <string name="intensity">Intensity</string>
+    <string name="spatial_width">Spatial Width</string>
+</resources>

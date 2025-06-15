@@ -1,0 +1,12 @@
+<resources>
+    <style name="Theme.CafeMode" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/saddle_brown</item>
+        <item name="colorPrimaryVariant">@color/dark_brown</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/tan</item>
+        <item name="colorSecondaryVariant">@color/tan</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">@color/cream_bg</item>
+    </style>
+</resources>
