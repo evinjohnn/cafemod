@@ -4,8 +4,7 @@
 #include <cmath>
 #include <android/log.h>
 #include <string.h>
-#include <system/audio_effects/effect_uuid.h> // Correct header for UUIDs
-#include <audio_effects/effect_interface.h>   // Main effect interface header
+#include <audio_effects/effect_c_api.h>  // Main effect interface header
 
 #define TAG "CafeModeNative"
 
@@ -169,14 +168,17 @@ int32_t cafemode_command(effect_handle_t self, uint32_t cmdCode, uint32_t cmdSiz
 }
 
 // Entry point for the Android audio framework
-audio_effect_library_t AUDIO_EFFECT_LIBRARY_INFO_SYM = {
+// --- AFTER ---
+// Add this attribute to ensure the symbol is exported correctly.
+extern "C" __attribute__((visibility("default")))
+const audio_effect_library_t AUDIO_EFFECT_LIBRARY_INFO_SYM = {
         .tag = AUDIO_EFFECT_LIBRARY_TAG,
         .version = EFFECT_LIBRARY_API_VERSION,
         .name = "CafeMode J.D",
         .implementor = "judini",
         .create_effect = cafemode_create,
         .release_effect = cafemode_release,
-        .get_descriptor = cafemode_get_descriptor,
+        .get_descriptor = cafemode_get_descriptor
 };
 
 } // extern "C"

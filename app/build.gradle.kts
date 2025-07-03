@@ -1,3 +1,6 @@
+// Add this import at the top for the Java Toolchain
+import org.gradle.jvm.toolchain.JavaLanguageVersion
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -34,13 +37,21 @@ android {
         jvmTarget = "1.8"
     }
 
+    // This block fixes the Java version warning and makes your build more reliable.
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(8))
+        }
+    }
+
     buildFeatures {
         viewBinding = true
     }
 
+    // This block correctly links your native code via CMake.
     externalNativeBuild {
-        ndkBuild {
-            path = file("src/main/jni/Android.mk")
+        cmake {
+            path = file("src/main/jni/CMakeLists.txt")
         }
     }
 }
